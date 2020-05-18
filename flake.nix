@@ -28,6 +28,7 @@
 
     pause = { url = "github:jgillick/python-pause"; flake = false; };
     pygments-cache = { url = "github:xonsh/pygments-cache"; flake = false; };
+    backtrace = { url = "github:nir0s/backtrace"; flake = false; };
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
@@ -51,19 +52,10 @@
         name = "${pname}-${version}";
       });
     in with pkgs.python3Packages; let 
-      demjson = pkgs.pythonPackages.demjson.override {
-        inherit buildPythonPackage fetchPypi; isPy3k = false;
-      };
-      pause = buildPythonPackage {
-        pname = "pause";
-        version = inputs.pause.rev;
-        src = inputs.pause;
-      };
-      pygments-cache = buildPythonPackage {
-        pname = "pygments-cache";
-        version = inputs.pygments-cache.rev;
-        src = inputs.pygments-cache;
-      };
+      demjson = pkgs.pythonPackages.demjson.override { inherit buildPythonPackage fetchPypi; isPy3k = false; };
+      pause = buildPythonPackage { pname = "pause"; version = inputs.pause.rev; src = inputs.pause; };
+      pygments-cache = buildPythonPackage { pname = "pygments-cache"; version = inputs.pygments-cache.rev; src = inputs.pygments-cache; };
+      backtrace = buildPythonPackage { pname = "backtrace"; version = inputs.backtrace.rev; src = inputs.backtrace; };
     in {
       apt-tabcomplete = buildXontrib { name = "apt-tabcomplete"; src = inputs.apt-tabcomplete; };
       autoxsh = buildXontrib { name = "autoxsh"; src = inputs.autoxsh; };
@@ -81,7 +73,7 @@
       prompt-bar = buildXontrib { name = "prompt-bar"; src = inputs.prompt-bar; };
       prompt-vi-mode = buildXontrib { name = "prompt-vi-mode"; src = inputs.prompt-vi-mode; };
       pyenv = buildXontrib { name = "pyenv"; src = inputs.pyenv; };
-      readable-traceback = buildXontrib { name = "readable-traceback"; src = inputs.readable-traceback; };
+      readable-traceback = buildXontrib { name = "readable-traceback"; src = inputs.readable-traceback; propagatedBuildInputs = [ colorama backtrace ]; };
       schedule = buildXontrib { name = "schedule"; src = inputs.schedule; propagatedBuildInputs = [ pause ]; };
       scrapy-tabcomplete = buildXontrib { name = "scrapy-tabcomplete"; src = inputs.scrapy-tabcomplete; };
       ssh-agent = buildXontrib { name = "ssh-agent"; src = inputs.ssh-agent; };
