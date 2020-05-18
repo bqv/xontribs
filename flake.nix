@@ -55,10 +55,10 @@
         src = null;
       });
     in with pkgs.python3Packages; let 
-      demjson = pkgs.pythonPackages.demjson.override { inherit buildPythonPackage fetchPypi; isPy3k = false; };
-      pause = buildPythonPackage { pname = "pause"; version = inputs.pause.rev; src = inputs.pause; };
+      demjson = (pkgs.pythonPackages.demjson.override { inherit buildPythonPackage fetchPypi; isPy3k = false; }).overridePythonAttrs { doCheck = false; };
+      pause = buildPythonPackage { pname = "pause"; version = inputs.pause.rev; src = inputs.pause; doCheck = false; };
       pygments-cache = buildPythonPackage { pname = "pygments-cache"; version = inputs.pygments-cache.rev; src = inputs.pygments-cache; propagatedBuildInputs = [ pygments ]; };
-      backtrace = buildPythonPackage { pname = "backtrace"; version = inputs.backtrace.rev; src = inputs.backtrace; };
+      backtrace = buildPythonPackage { pname = "backtrace"; version = inputs.backtrace.rev; src = inputs.backtrace; propagatedBuildInputs = [ colorama ]; checkInputs = [ pytest ]; };
       repassh = pkgs.poetry2nix.mkPoetryApplication { pname = "repassh"; version = inputs.repassh.rev; projectDir = inputs.repassh; };
     in {
       apt-tabcomplete = buildXontrib { name = "apt-tabcomplete"; src = inputs.apt-tabcomplete; };
