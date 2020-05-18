@@ -14,7 +14,8 @@
     kitty = { url = "github:scopatz/xontrib-kitty"; flake = false; };
     output-search = { url = "github:anki-code/xontrib-output-search"; flake = false; };
     pipeliner = { url = "github:anki-code/xontrib-pipeliner"; flake = false; };
-    powerline = { url = "github:santagada/xontrib-powerline"; flake = false; }; # use pypi xontrib-powerline2
+    #powerline = { url = "github:santagada/xontrib-powerline"; flake = false; };
+    powerline = { url = "github:vaaaaanquish/xontrib-powerline2"; flake = false; };
     prompt-bar = { url = "github:anki-code/xontrib-prompt-bar"; flake = false; };
     prompt-vi-mode = { url = "github:t184256/xontrib-prompt-vi-mode"; flake = false; };
     pyenv = { url = "github:dyuri/xontrib-pyenv"; flake = false; };
