@@ -82,7 +82,7 @@
       scrapy-tabcomplete = buildXontrib { name = "scrapy-tabcomplete"; src = inputs.scrapy-tabcomplete; };
       ssh-agent = buildXontrib { name = "ssh-agent"; src = inputs.ssh-agent; propagatedBuildInputs = [ repassh ]; };
       vox-tabcomplete = buildXontrib { name = "vox-tabcomplete"; src = inputs.vox-tabcomplete; };
-      xo = buildXontrib { name = "xo"; src = inputs.xo; propagatedBuildInputs = [ pygments-cache ]; };
+      xo = buildXontrib { name = "xo"; src = inputs.xo; propagatedBuildInputs = [ pygments-cache urwid ]; };
       z = buildXontrib { name = "z"; src = inputs.z; };
     });
 
