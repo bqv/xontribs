@@ -29,6 +29,12 @@
 
   outputs = inputs@{ self, nixpkgs, ... }: {
 
+    overlay = final: prev: let
+      inherit (prev) system;
+    in rec {
+      xontribs = self.packages.${system};
+    };
+
     packages = nixpkgs.lib.genAttrs [ "x86_64-linux" "i686-linux" "aarch64-linux" "x86_64-darwin" ] (system: let 
       pkgs = nixpkgs.legacyPackages.${system};
       buildXontrib = args@{ name, src, ... }: pkgs.python3Packages.buildPythonPackage (args // rec {
