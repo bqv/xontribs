@@ -25,6 +25,8 @@
     vox-tabcomplete = { url = "github:Granitosaurus/xonsh-vox-tabcomplete"; flake = false; };
     xo = { url = "github:scopatz/xo"; flake = false; };
     z = { url = "github:astronouth7303/xontrib-z"; flake = false; };
+
+    pause = { url = "github:jgillick/python-pause"; flake = false; };
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
@@ -48,7 +50,14 @@
         name = "${pname}-${version}";
       });
     in with pkgs.python3Packages; let 
-      demjson = pkgs.pythonPackages.demjson.override { inherit buildPythonPackage fetchPypi; isPy3k = false; };
+      demjson = pkgs.pythonPackages.demjson.override {
+        inherit buildPythonPackage fetchPypi; isPy3k = false;
+      };
+      pause = buildPythonPackage {
+        pname = "pause";
+        version = inputs.pause.rev;
+        src = inputs.pause;
+      };
     in {
       apt-tabcomplete = buildXontrib { name = "apt-tabcomplete"; src = inputs.apt-tabcomplete; };
       autoxsh = buildXontrib { name = "autoxsh"; src = inputs.autoxsh; };
@@ -67,7 +76,7 @@
       prompt-vi-mode = buildXontrib { name = "prompt-vi-mode"; src = inputs.prompt-vi-mode; };
       pyenv = buildXontrib { name = "pyenv"; src = inputs.pyenv; };
       readable-traceback = buildXontrib { name = "readable-traceback"; src = inputs.readable-traceback; };
-      schedule = buildXontrib { name = "schedule"; src = inputs.schedule; };
+      schedule = buildXontrib { name = "schedule"; src = inputs.schedule; propagatedBuildInputs = [ pause ]; };
       scrapy-tabcomplete = buildXontrib { name = "scrapy-tabcomplete"; src = inputs.scrapy-tabcomplete; };
       ssh-agent = buildXontrib { name = "ssh-agent"; src = inputs.ssh-agent; };
       vox-tabcomplete = buildXontrib { name = "vox-tabcomplete"; src = inputs.vox-tabcomplete; };
