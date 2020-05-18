@@ -47,7 +47,7 @@
         version = src.rev;
         name = "${pname}-${version}";
       });
-    in {
+    in with pkgs.python3Packages; {
       apt-tabcomplete = buildXontrib { name = "apt-tabcomplete"; src = inputs.apt-tabcomplete; };
       autoxsh = buildXontrib { name = "autoxsh"; src = inputs.autoxsh; };
       avox = buildXontrib { name = "avox"; src = inputs.avox; };
@@ -56,7 +56,7 @@
       docker-tabcomplete = buildXontrib { name = "docker-tabcomplete"; src = inputs.docker-tabcomplete; };
       fzf-widgets = buildXontrib { name = "fzf-widgets"; src = inputs.fzf-widgets; };
       hist-navigator = buildXontribPoem { name = "hist-navigator"; src = inputs.hist-navigator; };
-      histcpy = buildXontrib { name = "histcpy"; src = inputs.histcpy; };
+      histcpy = buildXontrib { name = "histcpy"; src = inputs.histcpy; propagatedBuildInputs = [ pyperclip ]; };
       kitty = buildXontrib { name = "kitty"; src = inputs.kitty; };
       output-search = buildXontrib { name = "output-search"; src = inputs.output-search; };
       pipeliner = buildXontrib { name = "pipeliner"; src = inputs.pipeliner; };
