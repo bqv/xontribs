@@ -27,6 +27,7 @@
     z = { url = "github:astronouth7303/xontrib-z"; flake = false; };
 
     pause = { url = "github:jgillick/python-pause"; flake = false; };
+    pygments-cache = { url = "github:xonsh/pygments-cache"; flake = false; };
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
@@ -58,6 +59,11 @@
         version = inputs.pause.rev;
         src = inputs.pause;
       };
+      pygments-cache = buildPythonPackage {
+        pname = "pygments-cache";
+        version = inputs.pygments-cache.rev;
+        src = inputs.pygments-cache;
+      };
     in {
       apt-tabcomplete = buildXontrib { name = "apt-tabcomplete"; src = inputs.apt-tabcomplete; };
       autoxsh = buildXontrib { name = "autoxsh"; src = inputs.autoxsh; };
@@ -80,7 +86,7 @@
       scrapy-tabcomplete = buildXontrib { name = "scrapy-tabcomplete"; src = inputs.scrapy-tabcomplete; };
       ssh-agent = buildXontrib { name = "ssh-agent"; src = inputs.ssh-agent; };
       vox-tabcomplete = buildXontrib { name = "vox-tabcomplete"; src = inputs.vox-tabcomplete; };
-      xo = buildXontrib { name = "xo"; src = inputs.xo; };
+      xo = buildXontrib { name = "xo"; src = inputs.xo; propagatedBuildInputs = [ pygments-cache ]; };
       z = buildXontrib { name = "z"; src = inputs.z; };
     });
 
