@@ -42,6 +42,11 @@
         version = src.rev;
         name = "${pname}-${version}";
       });
+      buildXontribPoem = args@{ name, src, ... }: pkgs.poetry2nix.mkPoetryApplication (args // rec {
+        pname = "xonsh-${args.name}";
+        version = src.rev;
+        name = "${pname}-${version}";
+      });
     in {
       apt-tabcomplete = buildXontrib { name = "apt-tabcomplete"; src = inputs.apt-tabcomplete; };
       autoxsh = buildXontrib { name = "autoxsh"; src = inputs.autoxsh; };
@@ -50,7 +55,7 @@
       direnv = buildXontrib { name = "direnv"; src = inputs.direnv; };
       docker-tabcomplete = buildXontrib { name = "docker-tabcomplete"; src = inputs.docker-tabcomplete; };
       fzf-widgets = buildXontrib { name = "fzf-widgets"; src = inputs.fzf-widgets; };
-      hist-navigator = buildXontrib { name = "hist-navigator"; src = inputs.hist-navigator; };
+      hist-navigator = buildXontribPoem { name = "hist-navigator"; src = inputs.hist-navigator; };
       histcpy = buildXontrib { name = "histcpy"; src = inputs.histcpy; };
       kitty = buildXontrib { name = "kitty"; src = inputs.kitty; };
       output-search = buildXontrib { name = "output-search"; src = inputs.output-search; };
