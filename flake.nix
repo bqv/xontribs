@@ -78,7 +78,7 @@
       prompt-vi-mode = buildXontrib { name = "prompt-vi-mode"; src = inputs.prompt-vi-mode; };
       pyenv = buildXontrib { name = "pyenv"; src = inputs.pyenv; };
       readable-traceback = buildXontrib { name = "readable-traceback"; src = inputs.readable-traceback; propagatedBuildInputs = [ colorama backtrace ]; };
-      schedule = buildXontrib { name = "schedule"; src = inputs.schedule; propagatedBuildInputs = [ pause ]; };
+      schedule = buildXontrib { name = "schedule"; src = inputs.schedule; propagatedBuildInputs = [ pause schedule ]; };
       scrapy-tabcomplete = buildXontrib { name = "scrapy-tabcomplete"; src = inputs.scrapy-tabcomplete; };
       ssh-agent = buildXontrib { name = "ssh-agent"; src = inputs.ssh-agent; propagatedBuildInputs = [ repassh ]; };
       vox-tabcomplete = buildXontrib { name = "vox-tabcomplete"; src = inputs.vox-tabcomplete; };
