@@ -47,7 +47,9 @@
         version = src.rev;
         name = "${pname}-${version}";
       });
-    in with pkgs.python3Packages; {
+    in with pkgs.python3Packages; let 
+      demjson = pkgs.pythonPackages.demjson.override { inherit buildPythonPackage fetchPypi; isPy3k = false; };
+    in {
       apt-tabcomplete = buildXontrib { name = "apt-tabcomplete"; src = inputs.apt-tabcomplete; };
       autoxsh = buildXontrib { name = "autoxsh"; src = inputs.autoxsh; };
       avox = buildXontrib { name = "avox"; src = inputs.avox; };
@@ -58,7 +60,7 @@
       hist-navigator = buildXontribPoem { name = "hist-navigator"; src = inputs.hist-navigator; };
       histcpy = buildXontrib { name = "histcpy"; src = inputs.histcpy; propagatedBuildInputs = [ pyperclip ]; };
       kitty = buildXontrib { name = "kitty"; src = inputs.kitty; };
-      output-search = buildXontrib { name = "output-search"; src = inputs.output-search; };
+      output-search = buildXontrib { name = "output-search"; src = inputs.output-search; propagatedBuildInputs = [ demjson ]; };
       pipeliner = buildXontrib { name = "pipeliner"; src = inputs.pipeliner; };
       powerline = buildXontrib { name = "powerline"; src = inputs.powerline; };
       prompt-bar = buildXontrib { name = "prompt-bar"; src = inputs.prompt-bar; };
