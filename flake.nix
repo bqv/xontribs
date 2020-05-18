@@ -57,7 +57,7 @@
     in with pkgs.python3Packages; let 
       demjson = pkgs.pythonPackages.demjson.override { inherit buildPythonPackage fetchPypi; isPy3k = false; };
       pause = buildPythonPackage { pname = "pause"; version = inputs.pause.rev; src = inputs.pause; };
-      pygments-cache = buildPythonPackage { pname = "pygments-cache"; version = inputs.pygments-cache.rev; src = inputs.pygments-cache; };
+      pygments-cache = buildPythonPackage { pname = "pygments-cache"; version = inputs.pygments-cache.rev; src = inputs.pygments-cache; propagatedBuildInputs = [ pygments ]; };
       backtrace = buildPythonPackage { pname = "backtrace"; version = inputs.backtrace.rev; src = inputs.backtrace; };
       repassh = pkgs.poetry2nix.mkPoetryApplication { pname = "repassh"; version = inputs.repassh.rev; projectDir = inputs.repassh; };
     in {
