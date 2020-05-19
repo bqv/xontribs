@@ -8,7 +8,8 @@
     base16-shell = { url = "github:ErickTucto/xontrib-base16-shell"; flake = false; };
     direnv = { url = "github:74th/xonsh-direnv"; flake = false; };
     docker-tabcomplete = { url = "github:xsteadfastx/xonsh-docker-tabcomplete"; flake = false; };
-    fzf-widgets = { url = "github:shahinism/xontrib-fzf-widgets"; flake = false; };
+    #fzf-widgets = { url = "github:shahinism/xontrib-fzf-widgets"; flake = false; };
+    fzf-widgets = { url = "github:laloch/xontrib-fzf-widgets"; flake = false; };
     hist-navigator = { url = "github:jnoortheen/xontrib-hist-navigator"; flake = false; };
     histcpy = { url = "github:con-f-use/xontrib-histcpy"; flake = false; };
     kitty = { url = "github:scopatz/xontrib-kitty"; flake = false; };
