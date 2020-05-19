@@ -19,6 +19,7 @@
     powerline = { url = "github:vaaaaanquish/xontrib-powerline2"; flake = false; };
     prompt-bar = { url = "github:anki-code/xontrib-prompt-bar"; flake = false; };
     prompt-vi-mode = { url = "github:t184256/xontrib-prompt-vi-mode"; flake = false; };
+    pure = { url = "github:popkirby/xonsh-pure"; flake = false; };
     pyenv = { url = "github:dyuri/xontrib-pyenv"; flake = false; };
     readable-traceback = { url = "github:6syun9/xontrib-readable-traceback"; flake = false; };
     schedule = { url = "github:astronouth7303/xontrib-schedule"; flake = false; };
@@ -51,7 +52,7 @@
       });
       buildXontribPoem = args@{ name, src, ... }: pkgs.poetry2nix.mkPoetryApplication (args // rec {
         pname = "xonsh-${args.name}";
-        version = src.rev;
+        version = args.src.rev;
         name = "${pname}-${version}";
         projectDir = args.src;
         src = null;
@@ -78,6 +79,7 @@
       powerline = buildXontrib { name = "powerline"; src = inputs.powerline; };
       prompt-bar = buildXontrib { name = "prompt-bar"; src = inputs.prompt-bar; };
       prompt-vi-mode = buildXontrib { name = "prompt-vi-mode"; src = inputs.prompt-vi-mode; };
+      pure = buildXontrib { name = "pure"; src = inputs.pure; };
       pyenv = buildXontrib { name = "pyenv"; src = inputs.pyenv; };
       readable-traceback = buildXontrib { name = "readable-traceback"; src = inputs.readable-traceback; propagatedBuildInputs = [ colorama backtrace ]; };
       schedule = buildXontrib { name = "schedule"; src = inputs.schedule; propagatedBuildInputs = [ pause schedule ]; };
