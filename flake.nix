@@ -16,7 +16,7 @@
     output-search = { url = "github:anki-code/xontrib-output-search"; flake = false; };
     pipeliner = { url = "github:anki-code/xontrib-pipeliner"; flake = false; };
     #powerline = { url = "github:santagada/xontrib-powerline"; flake = false; };
-    powerline = { url = "github:vaaaaanquish/xontrib-powerline2"; flake = false; };
+    powerline = { url = "github:laloch/xontrib-powerline"; flake = false; };
     prompt-bar = { url = "github:anki-code/xontrib-prompt-bar"; flake = false; };
     prompt-vi-mode = { url = "github:t184256/xontrib-prompt-vi-mode"; flake = false; };
     pure = { url = "github:popkirby/xonsh-pure"; flake = false; };
