@@ -13,7 +13,7 @@
     hist-navigator = { url = "github:jnoortheen/xontrib-hist-navigator"; flake = false; };
     histcpy = { url = "github:con-f-use/xontrib-histcpy"; flake = false; };
     kitty = { url = "github:scopatz/xontrib-kitty"; flake = false; };
-    output-search = { url = "github:anki-code/xontrib-output-search"; flake = false; };
+    output-search = { url = "github:tokenizer/xontrib-output-search"; flake = false; };
     pipeliner = { url = "github:anki-code/xontrib-pipeliner"; flake = false; };
     #powerline = { url = "github:santagada/xontrib-powerline"; flake = false; };
     powerline = { url = "github:laloch/xontrib-powerline"; flake = false; };
