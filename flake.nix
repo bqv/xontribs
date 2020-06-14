@@ -33,6 +33,7 @@
     pygments-cache = { url = "github:xonsh/pygments-cache"; flake = false; };
     backtrace = { url = "github:nir0s/backtrace"; flake = false; };
     repassh = { url = "github:dyuri/repassh"; flake = false; };
+    tokenize-output = { url = "github:tokenizer/tokenize-output"; flake = false; };
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
@@ -63,6 +64,7 @@
       pygments-cache = buildPythonPackage { pname = "pygments-cache"; version = inputs.pygments-cache.rev; src = inputs.pygments-cache; propagatedBuildInputs = [ pygments ]; };
       backtrace = buildPythonPackage { pname = "backtrace"; version = inputs.backtrace.rev; src = inputs.backtrace; propagatedBuildInputs = [ colorama ]; checkInputs = [ pytest ]; };
       repassh = pkgs.poetry2nix.mkPoetryApplication { pname = "repassh"; version = inputs.repassh.rev; projectDir = inputs.repassh; };
+      tokenize-output = buildPythonPackage { pname = "tokenize-output"; version = inputs.tokenize-output.rev; src = inputs.tokenize-output; propagatedBuildInputs = [ demjson ]; };
     in {
       apt-tabcomplete = buildXontrib { name = "apt-tabcomplete"; src = inputs.apt-tabcomplete; };
       autoxsh = buildXontrib { name = "autoxsh"; src = inputs.autoxsh; };
@@ -74,7 +76,7 @@
       hist-navigator = buildXontribPoem { name = "hist-navigator"; src = inputs.hist-navigator; };
       histcpy = buildXontrib { name = "histcpy"; src = inputs.histcpy; propagatedBuildInputs = [ pyperclip ]; };
       kitty = buildXontrib { name = "kitty"; src = inputs.kitty; };
-      output-search = buildXontrib { name = "output-search"; src = inputs.output-search; propagatedBuildInputs = [ demjson ]; };
+      output-search = buildXontrib { name = "output-search"; src = inputs.output-search; propagatedBuildInputs = [ tokenize-output ]; };
       pipeliner = buildXontrib { name = "pipeliner"; src = inputs.pipeliner; };
       powerline = buildXontrib { name = "powerline"; src = inputs.powerline; };
       prompt-bar = buildXontrib { name = "prompt-bar"; src = inputs.prompt-bar; };
